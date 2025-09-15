@@ -9,14 +9,28 @@ class Bureaucrat {
         int _grade;
 
     public:
-        Bureaucrat(const std::string name);
+        Bureaucrat();
+        Bureaucrat(const std::string &name, int grade);
+        Bureaucrat(const Bureaucrat &other);
+        Bureaucrat &operator=(const Bureaucrat &other);
         ~Bureaucrat();
 
-
         std::string getName() const;
-        int getGrade();
+        int getGrade() const;
+        void setGradeUp(int grade);
+        void setGradeDown(int grade);
+
+        class GradeTooHighException: public std::exception {
+            public:
+                virtual const char *what() const throw();
+        };
+
+        class GradeTooLowException: public std::exception {
+            public:
+                virtual const char *what() const throw();
+        };
 };
 
-std::ofstream &operator<<(std::ofstream &os, const Bureaucrat &b);
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &b);
 
 #endif
