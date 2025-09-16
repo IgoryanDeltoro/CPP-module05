@@ -5,25 +5,46 @@
 
 int main () {
    {
-     try {
-
-        Bureaucrat b1("Alice", 42);
-        b1.setGradeUp(100);
-        b1.setGradeUp(9);
+    std::cout << "\n======== Test number one without an error. =======\n\n";
+    try {
+        Bureaucrat b1("Alice", 1);
+        b1.decrementGrade();
         std::cout << GREEN  << b1 << RESET << '\n';
+
+        Bureaucrat b2;
+        b2 = b1;
+        b2.incrementGrade();
+        std::cout << GREEN  << b2 << RESET << '\n';
+
+        Bureaucrat b3 = b1;
+        b3.incrementGrade();; 
+        std::cout << GREEN  << b3 << RESET << '\n';
 
     } catch (const std::exception& e) {
         std::cerr << RED << e.what() << RESET << '\n';
     }
    }
     {
-     try {
-        
-        Bureaucrat b1("Alice", 42);
-        b1.setGradeDown(40);
-        b1.setGradeDown(-3);
-        std::cout << GREEN  << b1 << RESET << '\n';
-
+    std::cout << "\n======== Test number two with an error. =======\n\n";
+    try {
+        Bureaucrat b1("Michael", 155);
+    } catch (const std::exception& e) {
+        std::cerr << RED << e.what() << RESET << '\n';
+    }
+    try {
+        Bureaucrat b2("Michael", 0);
+    } catch (const std::exception& e) {
+        std::cerr << RED << e.what() << RESET << '\n';
+    }
+    try {
+        Bureaucrat b3("Michael", 150);
+        b3.decrementGrade();
+    } catch (const std::exception& e) {
+        std::cerr << RED << e.what() << RESET << '\n';
+    }
+        try {
+        Bureaucrat b3("Michael", 1);
+        b3.incrementGrade();
     } catch (const std::exception& e) {
         std::cerr << RED << e.what() << RESET << '\n';
     }
