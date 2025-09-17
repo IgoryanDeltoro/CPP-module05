@@ -1,13 +1,13 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(): _name(""), _grade(150){}
+Bureaucrat::Bureaucrat(): _name(""), _grade(0){}
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade(grade) {
     std::cout << "Bureaucrat parameterized constructor called.\n";
     if (_grade < 1) {
-        throw Bureaucrat::GradeTooHighException();
+        throw Bureaucrat::GradeTooLowException(); 
     } else if (_grade > 150) {
-        throw Bureaucrat::GradeTooLowException();
+        throw Bureaucrat::GradeTooHighException();
     }
 }
 
@@ -27,7 +27,7 @@ Bureaucrat::~Bureaucrat() {
     std::cout << "Bureaucrat destructor called.\n";
 }
 
-const std::string Bureaucrat::getName() const {
+std::string Bureaucrat::getName() const {
     return this->_name;
 }
 
@@ -56,9 +56,6 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 }
 
 std::ostream &operator << (std::ostream &os, const Bureaucrat &b) {
-    if (b.getName().length() != 0)
-        os << b.getName() << ", bureaucrat grade " << b.getGrade() << ".\n";
-    else
-        os << "Bureaucrat grade " << b.getGrade() << ".\n";
+    os << b.getName() << ", bureaucrat grade " << b.getGrade() << ".\n";
     return os;
 }
