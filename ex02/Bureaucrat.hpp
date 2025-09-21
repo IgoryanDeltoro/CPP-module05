@@ -1,10 +1,13 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
+# define RED "\e[31m"
+# define GREEN "\e[32m"
+# define RESET "\e[0m\n"
 # include <iostream>
 # include <bits/stdc++.h>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
     private:
@@ -22,7 +25,8 @@ class Bureaucrat {
         int getGrade() const;
         void incrementGrade();
         void decrementGrade();
-        void signForm(Form &f);
+        void signForm(AForm &f);
+        void executeForm(AForm const & form) const;
 
         class GradeTooHighException: public std::exception {
             public:
