@@ -25,21 +25,22 @@ static AForm* createRobotomy(const std::string &target) {
 }
 
 AForm* Intern::makeForm(const std::string &name, const std::string &target) const {
-    std::string names[] = {"shrubbery", "pardon", "robotomy"};
+    std::string names[] = {"shrubbery creation", "presidential pardon", "robotomy request"};
     typedef AForm* (*FormCreator)(const std::string &target); 
     FormCreator forms[] = {createShrubbery, createPardon, createRobotomy}; 
     std::string converted_str = toLowerCase(trim(name));
+
     AForm* res = NULL;
     size_t idx = -1;
     for (int i = 0; i < 3; i++) {
         if ((idx = converted_str.find(names[i])) != std::string::npos) {
-            std::cout << "Intern creates <form>.\n";
+            std::cout << "Intern creates " << names[i] << std::endl;
             res = forms[i](target);
             break;
         }
     }
     if (!res)
-        std::cout << "There is no match";
+        std::cout << "There is no match.\n";
     return res;
 }
 
