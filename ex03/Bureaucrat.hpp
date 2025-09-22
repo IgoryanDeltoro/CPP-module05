@@ -14,11 +14,11 @@ class Bureaucrat {
         const std::string _name;
         int _grade;
 
+        Bureaucrat(const Bureaucrat &other);
+        Bureaucrat &operator=(const Bureaucrat &other);
     public:
         Bureaucrat();
         Bureaucrat(const std::string &name, int grade);
-        Bureaucrat(const Bureaucrat &other);
-        Bureaucrat &operator=(const Bureaucrat &other);
         ~Bureaucrat();
 
         const std::string getName() const;

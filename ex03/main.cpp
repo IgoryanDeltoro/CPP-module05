@@ -4,6 +4,7 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "Inter.hpp"
+#include <stdexcept>
 
 int main () {
 {
@@ -13,7 +14,7 @@ int main () {
         AForm* rrf;
         rrf = someRandomIntern.makeForm("   Presidential Pardon          ", "Bender");
         if (!rrf)
-            throw std::exception();
+            throw std::invalid_argument("Error: makeForme returned: (null)\n");
         std::cout << rrf->getName() << std::endl;
         delete rrf;
     }
