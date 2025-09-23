@@ -40,7 +40,7 @@ AForm* Intern::makeForm(const std::string &name, const std::string &target) cons
         }
     }
     if (!res)
-        std::cout << "There is no match.\n";
+        std::cout << name <<  " doesn't exist.\n";
     return res;
 }
 

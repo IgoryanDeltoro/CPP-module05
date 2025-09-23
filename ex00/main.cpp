@@ -9,6 +9,7 @@ int main () {
     try {
         Bureaucrat b1("Alice", 1);
         b1.decrementGrade();
+       
         std::cout << GREEN  << b1 << RESET << '\n';
 
         Bureaucrat b2;
