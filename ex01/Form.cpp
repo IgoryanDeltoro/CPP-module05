@@ -7,9 +7,9 @@ Form::Form() : _name(""), _signGrade(150), _executeGrade(150), _isSigned(false) 
 Form::Form(const std::string n, int sg, int eg) : _name(n), _signGrade(sg), _executeGrade(eg), _isSigned(false) {
     std::cout << "Form parameterized constructor called.\n";
     if (_signGrade < 1 || _executeGrade < 1)
-        Form::GradeTooHighException();
+        throw GradeTooHighException();
     if (_signGrade > 150 || _executeGrade > 150)
-        Form::GradeTooLowException();
+        throw GradeTooLowException();
 }
 
 Form::~Form() {
@@ -44,7 +44,7 @@ void Form::beSigned(const Bureaucrat &b) {
     if (b.getGrade() <= _signGrade) 
         _isSigned = true;
     else
-        throw Form::GradeTooLowException();
+        throw GradeTooLowException();
 }
 
 std::ostream &operator << (std::ostream &os, const Form &f) {

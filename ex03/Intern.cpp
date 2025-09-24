@@ -26,7 +26,7 @@ static AForm* createRobotomy(const std::string &target) {
 
 AForm* Intern::makeForm(const std::string &name, const std::string &target) const {
     std::string names[] = {"shrubbery creation", "presidential pardon", "robotomy request"};
-    typedef AForm* (*FormCreator)(const std::string &target); 
+    typedef AForm* (*FormCreator)(const std::string &target);
     FormCreator forms[] = {createShrubbery, createPardon, createRobotomy}; 
     std::string converted_str = toLowerCase(trim(name));
 

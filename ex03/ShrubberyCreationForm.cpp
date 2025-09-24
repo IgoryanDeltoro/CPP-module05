@@ -5,7 +5,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(): AForm(), _target(""){
     std::cout << "ShrubberyCreationForm default constructor called.\n";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationFor", 145, 137), _target(target) {
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
     std::cout << "ShrubberyCreationForm parameterized constructor called.\n";
 }
 
@@ -29,7 +29,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
     std::ofstream outfile(fname.c_str());
 
     if (!outfile.is_open()) {
-        throw ShrubberyCreationForm::AnErrorMessageException("Error: could not open file.");
+        throw AnErrorMessageException("Error: could not open file.");
     }
     outfile <<  "   ccee88oo\n"
                 " C8O8O8Q8PoOb o8oo\n"

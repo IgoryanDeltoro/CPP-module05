@@ -7,9 +7,9 @@ AForm::AForm() : _name(""), _signGrade(150), _executeGrade(150), _isSigned(false
 AForm::AForm(const std::string n, int sg, int eg) : _name(n), _signGrade(sg), _executeGrade(eg), _isSigned(false) {
     std::cout << "AForm parameterized constructor called.\n";
     if (_signGrade < 1 || _executeGrade < 1)
-        AForm::GradeTooHighException();
+        throw GradeTooHighException();
     if (_signGrade > 150 || _executeGrade > 150)
-        AForm::GradeTooLowException();
+        throw GradeTooLowException();
 }
 
 AForm::~AForm() {
@@ -46,21 +46,21 @@ int AForm::getExetuteGrade() const {
 
 bool AForm::beSigned(const Bureaucrat &b) {
     if (_isSigned) {
-        std::cout << b.getName() << " form was signed.\n";
+        std::cout << b.getName() << " has already signed the form.\n";
         return false;
     }
     if (b.getGrade() <= _signGrade)
         _isSigned = true;
     else
-        throw AForm::GradeTooLowException();
+        throw GradeTooLowException();
     return true;
 }
 
 void AForm::checkExecution(const Bureaucrat &execution) const {
     if (!_isSigned)
-        throw AForm::FormNotSignedException();
+        throw FormNotSignedException();
     if (execution.getGrade() > _executeGrade)
-        throw AForm::GradeTooLowException();
+        throw GradeTooLowException();
 }
 
 std::ostream &operator << (std::ostream &os, const AForm &f) {

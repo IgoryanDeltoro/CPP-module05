@@ -6,7 +6,8 @@
 #define RESET "\e[0m\n"
 
 int main () {
-   {
+{
+    
     std::cout << "\n======== Test number one without an error. =======\n\n";
     try {
         Bureaucrat b1("Alice", 50);
@@ -17,6 +18,18 @@ int main () {
     } catch (const std::exception& e) {
         std::cerr << RED << e.what() << RESET << '\n';
     }
-   }
+}
+{
+    std::cout << "\n======== Test number one with an error while initialization. =======\n\n";
+    try {
+        Bureaucrat b1("Alice", 50);
+        b1.decrementGrade();
+        Form f1("Rent", 50, -1);
+        b1.signForm(f1);
+
+    } catch (const std::exception& e) {
+        std::cerr << RED << e.what() << RESET << '\n';
+    }
+}
     return 0;
 }

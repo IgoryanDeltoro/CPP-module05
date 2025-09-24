@@ -109,7 +109,7 @@ int main () {
     }
     try
     {
-        std::cout  << RED << "\n============ Presidential pardon erro test (try to incremebt grade) ==========\n" << RESET;
+        std::cout  << RED << "\n============ Presidential pardon erro test (try to increment grade) ==========\n" << RESET;
         Intern someRandomIntern;
         Bureaucrat br("Bob", 1);
         rrf = someRandomIntern.makeForm("   Presidential pardon          ", "Linda");

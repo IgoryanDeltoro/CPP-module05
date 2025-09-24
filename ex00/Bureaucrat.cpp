@@ -5,9 +5,9 @@ Bureaucrat::Bureaucrat(): _name(""), _grade(150){}
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade(grade) {
     std::cout << "Bureaucrat parameterized constructor called.\n";
     if (_grade < 1) {
-        throw Bureaucrat::GradeTooHighException();
+        throw GradeTooHighException();
     } else if (_grade > 150) {
-        throw Bureaucrat::GradeTooLowException();
+        throw GradeTooLowException();
     }
 }
 
